@@ -6,7 +6,7 @@ tracer.initialize({
   auth: process.env.CLIENT_SECRET,
   endpoint: process.env.SPECULA_APM_ENDPOINT,
   serviceName: 'cinema-microservice::payment-service',
-  instrumentations: ['express', 'http']
+  instrumentations: ['express', 'http', 'mongodb']
 })
 const {EventEmitter} = require('events')
 const server = require('./server/server')

@@ -42,6 +42,6 @@
     "mongodb": "^2.1.18",
     "morgan": "^1.7.0",
     "spdy": "^3.4.4",
-    "specula-auto-tracer": "git+ssh://git@github.com/Specula-io/specula-auto-tracer.git#1.0.4"
+    "specula-auto-tracer": "git+ssh://git@github.com/Specula-io/specula-auto-tracer.git#1.0.5"
   }
 }

@@ -56,7 +56,7 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "spdy": "^3.4.4",
-    "specula-auto-tracer": "git+ssh://git@github.com/Specula-io/specula-auto-tracer.git#1.0.4",
+    "specula-auto-tracer": "git+ssh://git@github.com/Specula-io/specula-auto-tracer.git#1.0.5",
     "swagger-ui-express": "^4.1.6"
   }
 }
