@@ -79,7 +79,7 @@ function status {
 
 function main {
   setup-swarm
-  setup-mongo
+  # setup-mongo
   setup-images
   setup-services
   status

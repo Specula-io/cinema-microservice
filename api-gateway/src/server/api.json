@@ -1,0 +1,705 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Cinema MicroService",
+        "version": "v1"
+    },
+    "basePath": "/",
+    "paths": {
+        "/login": {
+            "post": {
+                "tags": [
+                    "gateway"
+                ],
+                "operationId": "POST_login",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                        }
+                    }
+                },
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "object",
+                            "required": ["email", "password"],
+                            "properties": {
+                                "email": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "in": "body",
+                        "name": "body",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        "/logout": {
+            "post": {
+                "tags": [
+                    "gateway"
+                ],
+                "operationId": "POST_logout",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                        }
+                    }
+                },
+                "consumes": [
+                    "application/json"
+                ]
+            }
+        },
+        "/movies/premieres": {
+            "get": {
+                "tags": [
+                    "movies-service"
+                ],
+                "operationId": "GET_premieres",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/MoviePremieres"
+                        }
+                    }
+                }
+            }
+        },
+        "/movies": {
+            "get": {
+                "tags": [
+                    "movies-service"
+                ],
+                "operationId": "GET_movies",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Movies"
+                        }
+                    }
+                }
+            },
+            "parameters": []
+        },
+        "/movies/{id}": {
+            "get": {
+                "tags": [
+                    "movies-service"
+                ],
+                "operationId": "GET_id",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Movie"
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "type": "string",
+                    "in": "path",
+                    "name": "id",
+                    "required": true
+                }
+            ]
+        },
+        "/booking": {
+            "post": {
+                "tags": [
+                    "booking-service"
+                ],
+                "operationId": "POST_getBooking",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Ticket"
+                        }
+                    }
+                },
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "$ref": "#/definitions/Booking"
+                        },
+                        "in": "body",
+                        "name": "body",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        "/booking/verify/{orderId}": {
+            "get": {
+                "tags": [
+                    "booking-service"
+                ],
+                "operationId": "GET_verify-orderId",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Ticket"
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "type": "string",
+                    "in": "path",
+                    "name": "orderId",
+                    "required": true
+                }
+            ]
+        },
+        "/payment/makePurchase": {
+            "post": {
+                "tags": [
+                    "payment-service"
+                ],
+                "operationId": "POST_makePurchase",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Payment"
+                        }
+                    }
+                },
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "$ref": "#/definitions/PaymentOrder"
+                        },
+                        "in": "body",
+                        "name": "body",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        "/payment/getPurchaseById/{id}": {
+            "get": {
+                "tags": [
+                    "payment-service"
+                ],
+                "operationId": "GET_getPurchaseById-id",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Payment"
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "type": "string",
+                    "in": "path",
+                    "name": "id",
+                    "required": true
+                }
+            ]
+        },
+        "/cinemas": {
+            "get": {
+                "tags": [
+                    "cinema-catalog-service"
+                ],
+                "operationId": "GET_root",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Cinemas"
+                        }
+                    }
+                }
+            }
+        },
+        "/cinemas/{cinema_id}": {
+            "get": {
+                "tags": [
+                    "cinema-catalog-service"
+                ],
+                "operationId": "GET_cinema_id",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Movies"
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "type": "string",
+                    "in": "path",
+                    "name": "cinema_id",
+                    "required": true
+                }
+            ]
+        },
+        "/cinemas/{ciyt_id}/{movie_id}": {
+            "get": {
+                "tags": [
+                    "cinema-catalog-service"
+                ],
+                "operationId": "GET_ciyt_id-movie_id",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Schedules"
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "type": "string",
+                    "in": "path",
+                    "name": "ciyt_id",
+                    "required": true
+                },
+                {
+                    "type": "string",
+                    "in": "path",
+                    "name": "movie_id",
+                    "required": true
+                }
+            ]
+        },
+        "/notification/sendEmail": {
+            "post": {
+                "tags": [
+                    "notification-service"
+                ],
+                "operationId": "POST_sendEmail",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "$ref": "#/definitions/Payload"
+                        },
+                        "in": "body",
+                        "name": "body",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        "/notification/sendSMS": {
+            "post": {
+                "tags": [
+                    "notification-service"
+                ],
+                "operationId": "POST_sendSMS",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "$ref": "#/definitions/Payload"
+                        },
+                        "in": "body",
+                        "name": "body",
+                        "required": true
+                    }
+                ]
+            }
+        }
+    },
+    "definitions": {
+        "Movie": {
+            "example": {
+                "id": "123",
+                "title": "Assasins Creed",
+                "runtime": 115,
+                "format": "IMAX",
+                "plot": "Lorem ipsum dolor sit amet",
+                "releaseYear": 2017,
+                "releaseMonth": 1,
+                "releaseDay": 6
+            },
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "runtime": {
+                    "type": "number"
+                },
+                "format": {
+                    "type": "string"
+                },
+                "plot": {
+                    "type": "string"
+                },
+                "releaseYear": {
+                    "type": "number"
+                },
+                "releaseMonth": {
+                    "type": "number"
+                },
+                "releaseDay": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "id",
+                "title",
+                "runtime",
+                "format",
+                "plot",
+                "releaseYear",
+                "releaseMonth",
+                "releaseDay"
+            ],
+            "type": "object"
+        },
+        "MoviePremieres": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Movie"
+            }
+        },
+        "Booking": {
+            "properties": {
+                "city": {
+                    "type": "string"
+                },
+                "cinema": {
+                    "type": "string"
+                },
+                "movie": {
+                    "type": "string"
+                },
+                "schedule": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "cinemaRoom": {
+                    "type": "number"
+                },
+                "seats": {
+                    "type": "array",
+                    "items": {"type": "object"}
+                },
+                "totalAmount": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "city",
+                "cinema",
+                "movie",
+                "schedule",
+                "cinemaRoom",
+                "seats",
+                "totalAmount"
+            ],
+            "type": "object"
+        },
+        "User": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "lastname": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "creditcard": {
+                    "type": "object"
+                },
+                "phoneNumber": {
+                    "type": "string"
+                },
+                "membership": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "name",
+                "lastname",
+                "email",
+                "creditcard"
+            ],
+            "type": "object"
+        },
+        "Ticket": {
+            "properties": {
+                "cinema": {
+                    "type": "string"
+                },
+                "schedule": {
+                    "type": "string"
+                },
+                "movie": {
+                    "type": "string"
+                },
+                "seat": {
+                    "type": "string"
+                },
+                "cinemaRoom": {
+                    "type": "string"
+                },
+                "orderId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "cinema",
+                "schedule",
+                "movie",
+                "seat",
+                "cinemaRoom",
+                "orderId"
+            ],
+            "type": "object"
+        },
+        "PaymentOrder": {
+            "properties": {
+                "userName": {
+                    "type": "string"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "number": {
+                    "type": "string"
+                },
+                "cvc": {
+                    "type": "number"
+                },
+                "exp_month": {
+                    "type": "number"
+                },
+                "exp_year": {
+                    "type": "number"
+                },
+                "amount": {
+                    "type": "number"
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "userName",
+                "currency",
+                "number",
+                "cvc",
+                "exp_month",
+                "exp_year",
+                "amount",
+                "description"
+            ],
+            "type": "object"
+        },
+        "Payment": {
+            "properties": {
+                "paid": {
+                    "$ref": "#/definitions/PaymentOrder"
+                },
+                "amount": {
+                    "type": "number"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "charge": {
+                    "type": "object"
+                }
+            },
+            "required": [
+                "paid",
+                "amount",
+                "username",
+                "charge"
+            ],
+            "type": "object"
+        },
+        "Countries": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/object.Country "
+            }
+        },
+        "States": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/object.State "
+            }
+        },
+        "Cities": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/object.City "
+            }
+        },
+        "Cinemas": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/object.Cinema "
+            }
+        },
+        "Movies": {
+            "$ref": "#/definitions/MoviePremieres"
+        },
+        "Schedules": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/object.Schedule "
+            }
+        },
+        "Cinema": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "room": {
+                    "type": "string"
+                },
+                "seats": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name",
+                "room",
+                "seats"
+            ],
+            "type": "object"
+        },
+        "Payload": {
+            "properties": {
+                "city": {
+                    "type": "string"
+                },
+                "userType": {
+                    "type": "string"
+                },
+                "totalAmount": {
+                    "type": "number"
+                },
+                "cinema": {
+                    "$ref": "#/definitions/Cinema"
+                },
+                "movie": {
+                    "$ref": "#/definitions/Movie"
+                },
+                "orderId": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "user": {
+                    "$ref": "#/definitions/User"
+                }
+            },
+            "required": [
+                "city",
+                "userType",
+                "totalAmount",
+                "cinema",
+                "movie",
+                "orderId",
+                "description",
+                "user"
+            ],
+            "type": "object"
+        }
+    }
+}

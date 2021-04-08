@@ -13,7 +13,6 @@ const connect = (options, mediator) => {
       getMongoURL(options), {
         db: options.dbParameters(),
         server: options.serverParameters(),
-        replset: options.replsetParameters(options.repl)
       }, (err, db) => {
         if (err) {
           mediator.emit('db.error', err)

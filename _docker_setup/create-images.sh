@@ -20,7 +20,7 @@ for ((i = 0; i < ${#array[@]}; ++i)); do
   SERVICE=$(echo ${array[$i]} | cut -d'/' -f 2)
 
   # we delete the image if it exists already
-  docker rmi crizstian/$SERVICE
+  docker rmi lucaalexandru/$SERVICE
 
   # we create or recreate our image
   sh ./create-image.sh
@@ -29,10 +29,10 @@ for ((i = 0; i < ${#array[@]}; ++i)); do
   IMAGE_ID=$(docker images -q $SERVICE)
 
   # we tag our image so we can publish it to our docker hub account
-  docker tag $IMAGE_ID crizstian/$SERVICE:latest
+  docker tag $IMAGE_ID lucaalexandru/$SERVICE:latest
 
   # we publish our image to our docker hub account
-  docker push crizstian/$SERVICE:latest
+  docker push lucaalexandru/$SERVICE:latest
 
   # we delete our local image because we are not going to need it
   # and mantain clean our environment

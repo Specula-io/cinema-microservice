@@ -3,7 +3,7 @@
 # default parameters
 DRIVER="virtualbox"
 MANAGERS=1
-WORKERS=2
+WORKERS=1
 DISK_SIZE="20000"
 MEMORY="2048"
 DOCKER_VERSION="https://github.com/boot2docker/boot2docker/releases/download/v1.13.0/boot2docker.iso"
@@ -23,39 +23,6 @@ Options:
   -r, --memory                     memory ram size for docker-machine (default 2GB)"
   exit 1
 }
-
-# get parameters
-while [ "$#" -gt 0 ]; do
-  case "$1" in
-    --driver|-d)
-    DRIVER="$2"
-    shift 2
-    ;;
-    --manager|-m)
-    MANAGERS="$2"
-    shift 2
-    ;;
-    --worker|-w)
-    WORKERS="$2"
-    shift 2
-    ;;
-    --version|-v)
-    DOCKER_VERSION="$2"
-    shift 2
-    ;;
-    --disksize|-ds)
-    DISK_SIZE="$2"
-    shift 2
-    ;;
-    --memory|-r)
-    MEMORY="$2"
-    shift 2
-    ;;
-    -h|--help)
-    usage
-    ;;
-  esac
-done
 
 if [ "$DRIVER" == "virtualbox" ]; then
   echo "-> about to create a swarm with $MANAGERS manager(s) and $WORKERS WORKERS on $DRIVER machines"

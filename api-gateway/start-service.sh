@@ -16,6 +16,6 @@ do
 
     docker build -t api-gateway-service .
 
-    docker run --name api-gateway-service -v /Users/Cramirez/.docker/machine/machines/$server:/certs --net='host' --env-file env -d api-gateway-service
+    docker run --name api-gateway-service -v /var/run/docker.sock:/var/run/docker.sock -v /Users/lucaalexandru/workspace/specula/cinema-microservice/certs:/certs --net='host' --env-file env -d lucaalexandru/api-gateway-service
 
 done

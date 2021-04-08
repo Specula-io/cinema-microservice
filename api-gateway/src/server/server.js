@@ -1,11 +1,19 @@
 'use strict'
 const express = require('express')
 const proxy = require('http-proxy-middleware')
-const spdy = require('spdy')
+const expressJwt = require('express-jwt')
+const {JWT_SECRET} = require('./const')
+const passport = require('passport')
+const {loginStrategy, authenticateLocal} = require('./login')
+const cookieParser = require('cookie-parser')
+const bodyParser = require('body-parser')
+const jwt = require('jsonwebtoken')
+const swaggerUi = require('swagger-ui-express')
+const swaggerDocument = require('./api.json');
 
 const start = (container) => {
   return new Promise((resolve, reject) => {
-    const {port, ssl} = container.resolve('serverSettings')
+    const {port} = container.resolve('serverSettings')
     const routes = container.resolve('routes')
 
     if (!routes) {
@@ -16,6 +24,66 @@ const start = (container) => {
     }
 
     const app = express()
+    const unprotectedRoutes = ['/login', '/logout', '/docs']
+
+    passport.use(loginStrategy)
+    app.use(passport.initialize())
+    app.use(cookieParser())
+    app.use(bodyParser.json())
+    app.use('/docs', swaggerUi.serve);
+		app.get('/docs', swaggerUi.setup(swaggerDocument, {swaggerOptions: {displayOperationId: true}}));
+
+    app.post('/login', async (req, res) => {
+      try {
+        let user = await authenticateLocal(req, res)
+        let token = jwt.sign(user, JWT_SECRET, {expiresIn: '7d', algorithm: 'HS256'})
+        
+        res.cookie('authentication-token', token, {httpOnly: true, sameSite: false, secure: false});
+        
+        res.status(200).send({
+          user,
+          token
+        })
+      } catch (err) {
+        res.status(403).send({message: err.message})
+      }
+    })
+    
+    app.post('/logout', async(req, res) => {
+      for (let cookie in req.cookies) {
+				res.clearCookie(cookie);
+			}
+      res.status(200).send({})
+    })
+
+    app.use(
+      expressJwt({
+        secret: JWT_SECRET,
+        algorithms: ['HS256'],
+        credentialsRequired: true,
+        /*
+         * Function to extract and parse JWT from response, the resulting
+         * parsed token object will be available in req.user.
+         */
+        getToken: (req) => {
+          if (req.query && req.query.token) {
+            const token = req.query.token
+            return token
+          } else if (req.cookies['authentication-token']) {
+            return req.cookies['authentication-token']
+          }
+
+          if (
+            req.headers.authorization &&
+            req.headers.authorization.split(' ')[0] === 'Bearer'
+          ) {
+            const token = req.headers.authorization.split(' ')[1]
+            return token
+          }
+          return null
+        }
+      }).unless({path: unprotectedRoutes})
+    )
 
     for (let id of Reflect.ownKeys(routes)) {
       const {route, target} = routes[id]
@@ -26,12 +94,14 @@ const start = (container) => {
       }))
     }
 
-    if (process.env.NODE === 'test') {
-      const server = app.listen(port, () => resolve(server))
-    } else {
-      const server = spdy.createServer(ssl, app)
-        .listen(port, () => resolve(server))
-    }
+    const server = app.listen(port, () => resolve(server))
+
+    /*     if (process.env.NODE === 'test') {
+          const server = app.listen(port, () => resolve(server))
+        } else {
+          const server = spdy.createServer(ssl, app)
+            .listen(port, () => resolve(server))
+        } */
   })
 }
 

@@ -1,0 +1,6 @@
+DB=booking
+DB_USER=root
+DB_PASS=123123
+DB_SERVERS1=host.docker.internal:27017
+DB_SERVERS=127.0.0.1:27017
+PORT=3000

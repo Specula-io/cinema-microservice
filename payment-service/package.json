@@ -38,6 +38,7 @@
     "awilix": "^2.2.2",
     "body-parser": "^1.16.0",
     "cors": "^2.8.1",
+    "dotenv": "^8.2.0",
     "express": "^4.14.0",
     "helmet": "^3.4.0",
     "http-status": "^0.2.5",
@@ -45,6 +46,7 @@
     "mongodb": "^2.1.18",
     "morgan": "^1.7.0",
     "spdy": "^3.4.4",
+    "specula-auto-tracer": "git+ssh://git@github.com/Specula-io/specula-auto-tracer.git#1.0.4",
     "stripe": "^4.15.0"
   }
 }
