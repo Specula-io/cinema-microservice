@@ -3326,8 +3326,8 @@
       }
     },
     "specula-auto-tracer": {
-      "version": "git+ssh://git@github.com/Specula-io/specula-auto-tracer.git#32736e8df550ff8614ac33adf1147593d8d3186e",
-      "from": "git+ssh://git@github.com/Specula-io/specula-auto-tracer.git#1.0.4",
+      "version": "git+ssh://git@github.com/Specula-io/specula-auto-tracer.git#04d9ae160dbe39021fa0524bacc052818174e924",
+      "from": "git+ssh://git@github.com/Specula-io/specula-auto-tracer.git#1.0.5",
       "requires": {
         "cls-hooked": "4.2.2",
         "debug": "3.1.0",
