@@ -1,6 +1,6 @@
 'use strict'
 require('dotenv').config()
-const tracer = require('specula-auto-tracer')
+const tracer = require('./specula-auto-tracer')
 tracer.initialize({
   clientId: process.env.CLIENT_ID,
   auth: process.env.CLIENT_SECRET,

@@ -1,0 +1,16 @@
+
+[submodule "api-gateway/src/specula-auto-tracer"]
+	path = api-gateway/src/specula-auto-tracer
+	url = git@github.com:Specula-io/specula-auto-tracer.git
+[submodule "booking-service/src/specula-auto-tracer"]
+	path = booking-service/src/specula-auto-tracer
+	url = git@github.com:Specula-io/specula-auto-tracer.git
+[submodule "cinema-catalog-service/src/specula-auto-tracer"]
+	path = cinema-catalog-service/src/specula-auto-tracer
+	url = git@github.com:Specula-io/specula-auto-tracer.git
+[submodule "movies-service/src/specula-auto-tracer"]
+	path = movies-service/src/specula-auto-tracer
+	url = git@github.com:Specula-io/specula-auto-tracer.git
+[submodule "payment-service/src/specula-auto-tracer"]
+	path = payment-service/src/specula-auto-tracer
+	url = git@github.com:Specula-io/specula-auto-tracer.git
