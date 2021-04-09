@@ -8,6 +8,15 @@ tracer.initialize({
   serviceName: 'cinema-microservice::api-gateway',
   instrumentations: ['express', 'http', 'mongodb']
 })
+
+console.log('--- tracer config ---')
+console.log({
+  clientId: process.env.CLIENT_ID,
+  auth: process.env.CLIENT_SECRET,
+  endpoint: process.env.SPECULA_APM_ENDPOINT
+})
+console.log('--- tracer config ---')
+
 const {EventEmitter} = require('events')
 const server = require('./server/server')
 const docker = require('./docker/docker')
