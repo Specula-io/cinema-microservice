@@ -9,7 +9,8 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const jwt = require('jsonwebtoken')
 const swaggerUi = require('swagger-ui-express')
-const swaggerDocument = require('./api.json');
+const swaggerDocument = require('./api.json')
+const cors = require('cors')
 
 const start = (container) => {
   return new Promise((resolve, reject) => {
@@ -27,19 +28,20 @@ const start = (container) => {
     const unprotectedRoutes = ['/login', '/logout', '/docs']
 
     passport.use(loginStrategy)
+    app.use(cors())
     app.use(passport.initialize())
     app.use(cookieParser())
     app.use(bodyParser.json())
-    app.use('/docs', swaggerUi.serve);
-		app.get('/docs', swaggerUi.setup(swaggerDocument, {swaggerOptions: {displayOperationId: true}}));
+    app.use('/docs', swaggerUi.serve)
+    app.get('/docs', swaggerUi.setup(swaggerDocument, {swaggerOptions: {displayOperationId: true}}))
 
     app.post('/login', async (req, res) => {
       try {
         let user = await authenticateLocal(req, res)
         let token = jwt.sign(user, JWT_SECRET, {expiresIn: '7d', algorithm: 'HS256'})
-        
-        res.cookie('authentication-token', token, {httpOnly: true, sameSite: false, secure: false});
-        
+
+        res.cookie('authentication-token', token, {httpOnly: true, sameSite: false, secure: false})
+
         res.status(200).send({
           user,
           token
@@ -48,11 +50,11 @@ const start = (container) => {
         res.status(403).send({message: err.message})
       }
     })
-    
-    app.post('/logout', async(req, res) => {
+
+    app.post('/logout', async (req, res) => {
       for (let cookie in req.cookies) {
-				res.clearCookie(cookie);
-			}
+        res.clearCookie(cookie)
+      }
       res.status(200).send({})
     })
 
