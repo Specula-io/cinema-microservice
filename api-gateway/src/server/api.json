@@ -138,7 +138,7 @@
                 "tags": [
                     "booking-service"
                 ],
-                "operationId": "POST_getBooking",
+                "operationId": "POST_postBooking",
                 "produces": [
                     "application/json"
                 ],
@@ -156,7 +156,7 @@
                 "parameters": [
                     {
                         "schema": {
-                            "$ref": "#/definitions/Booking"
+                            "$ref": "#/definitions/POSTBooking"
                         },
                         "in": "body",
                         "name": "body",
@@ -460,18 +460,20 @@
                     "type": "string"
                 },
                 "movie": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Spiderman"
                 },
                 "schedule": {
                     "type": "string",
-                    "format": "date-time"
+                    "format": "date-time",
+                    "example": "2022-04-13T14:11:43.903Z"
                 },
                 "cinemaRoom": {
                     "type": "number"
                 },
                 "seats": {
                     "type": "array",
-                    "items": {"type": "object"}
+                    "items": {"type": "string"}
                 },
                 "totalAmount": {
                     "type": "number"
@@ -491,31 +493,66 @@
         "User": {
             "properties": {
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "John"
                 },
-                "lastname": {
-                    "type": "string"
+                "lastName": {
+                    "type": "string",
+                    "example": "Doe"
                 },
                 "email": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "john@gmail.com"
                 },
-                "creditcard": {
-                    "type": "object"
+                "creditCard": {
+                    "type": "object",
+                    "properties": {
+                        "number": {
+                            "type": "string",
+                            "example": "1111222233334444"
+                        },
+                        "cvc": {
+                            "type": "string",
+                            "example": "123"
+                        },
+                        "exp_month": {
+                            "type": "string",
+                            "example": "07"
+                        },
+                        "exp_year": {
+                            "type": "string",
+                            "example": "2017"
+                        }
+                    }
                 },
                 "phoneNumber": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "123-456-7890"
                 },
                 "membership": {
-                    "type": "number"
+                    "type": "string",
+                    "example": "7777888899990000"
                 }
             },
             "required": [
                 "name",
-                "lastname",
+                "lastName",
                 "email",
-                "creditcard"
+                "creditCard"
             ],
             "type": "object"
+        },
+        "POSTBooking": {
+            "type": "object",
+            "required": ["booking", "user"],
+            "properties": {
+                "booking": {
+                    "$ref": "#/definitions/Booking"
+                },
+                "user": {
+                    "$ref": "#/definitions/User"
+                }
+            }
         },
         "Ticket": {
             "properties": {
