@@ -31,11 +31,10 @@ const start = (container) => {
     app.use(cors())
     app.use(passport.initialize())
     app.use(cookieParser())
-    app.use(bodyParser.json())
     app.use('/docs', swaggerUi.serve)
     app.get('/docs', swaggerUi.setup(swaggerDocument, {swaggerOptions: {displayOperationId: true}}))
 
-    app.post('/login', async (req, res) => {
+    app.post('/login', bodyParser.json(), async (req, res) => {
       try {
         let user = await authenticateLocal(req, res)
         let token = jwt.sign(user, JWT_SECRET, {expiresIn: '7d', algorithm: 'HS256'})
