@@ -650,25 +650,25 @@
         "Countries": {
             "type": "array",
             "items": {
-                "$ref": "#/definitions/object.Country "
+                "$ref": "#/definitions/Country"
             }
         },
         "States": {
             "type": "array",
             "items": {
-                "$ref": "#/definitions/object.State "
+                "$ref": "#/definitions/State"
             }
         },
         "Cities": {
             "type": "array",
             "items": {
-                "$ref": "#/definitions/object.City "
+                "$ref": "#/definitions/City"
             }
         },
         "Cinemas": {
             "type": "array",
             "items": {
-                "$ref": "#/definitions/object.Cinema "
+                "$ref": "#/definitions/Cinema"
             }
         },
         "Movies": {
@@ -677,7 +677,7 @@
         "Schedules": {
             "type": "array",
             "items": {
-                "$ref": "#/definitions/object.Schedule "
+                "$ref": "#/definitions/Schedule"
             }
         },
         "Cinema": {
