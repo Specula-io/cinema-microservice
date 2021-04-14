@@ -76,6 +76,27 @@ function getServices () {
       target: process.env.CINEMA_CATALOG_SERVICE_TARGET
     }, {
       Spec: {
+        Name: 'countries'
+      },
+      id: 'countries-service',
+      route: '/countries',
+      target: process.env.CINEMA_CATALOG_SERVICE_TARGET
+    }, {
+      Spec: {
+        Name: 'states'
+      },
+      id: 'states-service',
+      route: '/states',
+      target: process.env.CINEMA_CATALOG_SERVICE_TARGET
+    }, {
+      Spec: {
+        Name: 'cities'
+      },
+      id: 'cities-service',
+      route: '/cities',
+      target: process.env.CINEMA_CATALOG_SERVICE_TARGET
+    }, {
+      Spec: {
         Name: 'notification'
       },
       id: 'notification',

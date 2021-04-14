@@ -2,11 +2,65 @@
 
 const repository = (connection) => {
   const {db, ObjectID} = connection
+  
+  const getCountries = () => {
+    return new Promise((resolve, reject) => {
+      const cinemas = []
+      const query = {}
+      const cursor = db.collection('countries').find(query)
+      const addCinema = (cinema) => {
+        cinemas.push(cinema)
+      }
+      const sendCinemas = (err) => {
+        if (err) {
+          reject(new Error('An error occured fetching countries, err: ' + err))
+        }
+        resolve(cinemas)
+      }
+      cursor.forEach(addCinema, sendCinemas)
+    })
+  }
+  
+  const getStates = (countryId) => {
+    return new Promise((resolve, reject) => {
+      const cinemas = []
+      const query = countryId ? {country_id: countryId} : {}
+      const cursor = db.collection('states').find(query)
+      const addCinema = (cinema) => {
+        cinemas.push(cinema)
+      }
+      const sendCinemas = (err) => {
+        if (err) {
+          reject(new Error('An error occured fetching countries, err: ' + err))
+        }
+        resolve(cinemas)
+      }
+      cursor.forEach(addCinema, sendCinemas)
+    })
+  }
+  
+  const getCities = (stateId) => {
+    return new Promise((resolve, reject) => {
+      const cinemas = []
+      const query = stateId ? {state_id: stateId} : {}
+      const cursor = db.collection('cities').find(query)
+      const addCinema = (cinema) => {
+        cinemas.push(cinema)
+      }
+      const sendCinemas = (err) => {
+        if (err) {
+          reject(new Error('An error occured fetching countries, err: ' + err))
+        }
+        resolve(cinemas)
+      }
+      cursor.forEach(addCinema, sendCinemas)
+    })
+  }
 
   const getCinemasByCity = (cityId) => {
     return new Promise((resolve, reject) => {
       const cinemas = []
-      const query = {city_id: cityId}
+      const query = cityId ? {city_id: cityId} : {}
       const projection = {_id: 1, name: 1}
       const cursor = db.collection('cinemas').find(query, projection)
       const addCinema = (cinema) => {
@@ -79,6 +133,9 @@ const repository = (connection) => {
   }
 
   return Object.create({
+    getCountries,
+    getStates,
+    getCities,
     getCinemasByCity,
     getCinemaById,
     getCinemaScheduleByMovie,
