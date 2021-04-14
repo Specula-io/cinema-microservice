@@ -27,8 +27,7 @@ const start = (container) => {
     const app = express()
     const unprotectedRoutes = ['/login', '/logout', '/docs']
 
-    app.use('/docs', swaggerUi.serve)
-    app.get('/docs', swaggerUi.setup(swaggerDocument, {swaggerOptions: {displayOperationId: true}}))
+    app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, {swaggerOptions: {displayOperationId: true}}))
 
     passport.use(loginStrategy)
     app.use(cors())
