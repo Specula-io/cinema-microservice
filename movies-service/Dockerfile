@@ -1,4 +1,4 @@
-FROM node:7.5.0-alpine
+FROM node:14-alpine
 
 RUN addgroup -S nupp && adduser -S -g nupp nupp
 
@@ -14,7 +14,7 @@ WORKDIR $HOME/app
 
 RUN chown -R nupp:nupp $HOME/* /usr/local/ && \
     chmod +x /usr/local/bin/dumb-init && \
-    npm cache clean && \
+    npm cache clean --force && \
     npm install --silent --progress=false --production && \
     chown -R nupp:nupp $HOME/*
 
