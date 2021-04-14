@@ -215,7 +215,13 @@
                 "parameters": [
                     {
                         "schema": {
-                            "$ref": "#/definitions/PaymentOrder"
+                            "type": "object",
+                            "required": ["paymentOrder"],
+                            "properties": {
+                                "paymentOrder": {
+                                    "$ref": "#/definitions/PaymentOrder"
+                                }
+                            }
                         },
                         "in": "body",
                         "name": "body",
@@ -588,28 +594,36 @@
         "PaymentOrder": {
             "properties": {
                 "userName": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Cristian Ramirez"
                 },
                 "currency": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "mxn"
                 },
                 "number": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "4242424242424242"
                 },
                 "cvc": {
-                    "type": "number"
+                    "type": "number",
+                    "example": "123"
                 },
                 "exp_month": {
-                    "type": "number"
+                    "type": "number",
+                    "example": "12"
                 },
                 "exp_year": {
-                    "type": "number"
+                    "type": "number",
+                    "example": "2025"
                 },
                 "amount": {
-                    "type": "number"
+                    "type": "number",
+                    "example": 71
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Tickect(s) for movie \"Assasins Creed\""
                 }
             },
             "required": [
