@@ -6,7 +6,7 @@ const repository = (db) => {
   const getAllMovies = () => {
     return new Promise((resolve, reject) => {
       const movies = []
-      const cursor = collection.find({}, {title: 1, id: 1})
+      const cursor = collection.find({}, {title: 1, id: 1, poster: 1})
       const addMovie = (movie) => {
         movies.push(movie)
       }
@@ -53,7 +53,7 @@ const repository = (db) => {
 
   const getMovieById = (id) => {
     return new Promise((resolve, reject) => {
-      const projection = { _id: 0, id: 1, title: 1, format: 1 }
+      const projection = { _id: 0, id: 1, title: 1, format: 1, poster: 1 }
       const sendMovie = (err, movie) => {
         if (err) {
           reject(new Error(`An error occured fetching a movie with id: ${id}, err: ${err}`))

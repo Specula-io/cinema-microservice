@@ -486,7 +486,8 @@
                 "plot": "Lorem ipsum dolor sit amet",
                 "releaseYear": 2017,
                 "releaseMonth": 1,
-                "releaseDay": 6
+                "releaseDay": 6,
+                "poster": "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg"
             },
             "properties": {
                 "id": {
@@ -512,6 +513,9 @@
                 },
                 "releaseDay": {
                     "type": "number"
+                },
+                "poster": {
+                    "type": "string"
                 }
             },
             "required": [
