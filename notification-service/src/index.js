@@ -1,5 +1,14 @@
 'use strict'
 require('dotenv').config()
+const tracer = require('./specula-auto-tracer')
+tracer.initialize({
+  clientId: process.env.CLIENT_ID,
+  auth: process.env.CLIENT_SECRET,
+  endpoint: process.env.SPECULA_APM_ENDPOINT,
+  serviceName: 'cinema-microservice::notification-service',
+  instrumentations: ['express', 'http', 'mongodb']
+})
+
 const {EventEmitter} = require('events')
 const server = require('./server/server')
 const repository = require('./repository/repository')

@@ -9,9 +9,14 @@ module.exports = (payload) => {
       .send({payload})
       .end((err, res) => {
         if (err) {
-          reject(new Error('An error occured with the payment service, err: ' + err))
+          return reject(new Error('An error occured with the payment service, err: ' + err))
         }
-        resolve(res.body)
+
+        if (res.status < 200 || res.status > 299) {
+          return reject(new Error(res.text));
+        }
+
+        return resolve(res.body)
       })
   })
 }

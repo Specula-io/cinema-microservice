@@ -14,3 +14,6 @@
 [submodule "payment-service/src/specula-auto-tracer"]
 	path = payment-service/src/specula-auto-tracer
 	url = git@github.com:Specula-io/specula-auto-tracer.git
+[submodule "notification-service/src/specula-auto-tracer"]
+	path = notification-service/src/specula-auto-tracer
+	url = git@github.com:Specula-io/specula-auto-tracer.git

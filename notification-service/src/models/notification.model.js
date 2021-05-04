@@ -13,7 +13,7 @@ const notificationSchema = (joi) => ({
     format: joi.string(),
     schedule: joi.date()
   }),
-  orderId: joi.string(),
+  orderId: joi.number(),
   _id: joi.string(),
   description: joi.string(),
   user: joi.object().keys({
