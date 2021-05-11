@@ -15,7 +15,8 @@ const connect = (options, mediator) => {
         server: options.serverParameters(),
       }, (err, db) => {
         if (err) {
-          mediator.emit('db.error', err)
+          mediator.emit('db.error', err);
+          return;
         }
 
         db.admin().authenticate(options.user, options.pass, (err, result) => {
