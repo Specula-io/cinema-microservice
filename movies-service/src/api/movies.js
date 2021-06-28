@@ -4,7 +4,12 @@ const status = require('http-status')
 module.exports = (app, options) => {
   const {repo} = options
 
-  app.get('/movies', (req, res, next) => {
+  app.get('/movies', async (req, res, next) => {
+    let msDelay = req.query.msDelay
+    if (msDelay) {
+      await sleep(msDelay)
+    }
+
     repo.getAllMovies().then(movies => {
       res.status(status.OK).json(movies)
     }).catch(next)
@@ -20,5 +25,11 @@ module.exports = (app, options) => {
     repo.getMovieById(req.params.id).then(movie => {
       res.status(status.OK).json(movie)
     }).catch(next)
+  })
+}
+
+function sleep (ms = 2000) {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(), ms)
   })
 }

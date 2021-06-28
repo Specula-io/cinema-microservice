@@ -95,6 +95,13 @@
                 "produces": [
                     "application/json"
                 ],
+                "parameters": [{
+                    "name": "msDelay",
+                    "in": "query",
+                    "type": "number",
+                    "enum": [1000, 2000, 3000],
+                    "required": false
+                }],
                 "responses": {
                     "200": {
                         "description": "",
@@ -103,8 +110,7 @@
                         }
                     }
                 }
-            },
-            "parameters": []
+            }
         },
         "/movies/{id}": {
             "get": {

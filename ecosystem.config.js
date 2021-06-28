@@ -8,15 +8,15 @@ module.exports = {
       DB: 'booking',
       DB_USER: 'root',
       DB_PASS: '123123',
-      CLIENT_ID: 'cb92ed50-5d9b-11eb-8635-6163697fc1b6',
-      CLIENT_SECRET: '5af7929af1a77a5088d327a625a546028259c7f1',
+      CLIENT_ID: 'a39087b1-8c44-478d-81cd-cbaee04cf212',
+      CLIENT_SECRET: '565b5d1b4ed092b0951222447d69318c59e54f8f',
       SPECULA_APM_ENDPOINT: 'http://localhost:8082',
-      PORT: 8081,
-      MOVIES_SERVICE_TARGET: 'http://127.0.0.1:3000',
-      BOOKING_SERVICE_TARGET: 'http://127.0.0.1:3001',
-      PAYMENT_SERVICE_TARGET: 'http://127.0.0.1:3002',
-      CINEMA_CATALOG_SERVICE_TARGET: 'http://127.0.0.1:3003',
-      NOTIFICATION_SERVICE_TARGET: 'http://127.0.0.1:3006'
+      PORT: 8581,
+      MOVIES_SERVICE_TARGET: 'http://127.0.0.1:4000',
+      BOOKING_SERVICE_TARGET: 'http://127.0.0.1:4001',
+      PAYMENT_SERVICE_TARGET: 'http://127.0.0.1:4002',
+      CINEMA_CATALOG_SERVICE_TARGET: 'http://127.0.0.1:4003',
+      NOTIFICATION_SERVICE_TARGET: 'http://127.0.0.1:4006'
     }
   }, {
     name: 'movies-service',
@@ -27,11 +27,11 @@ module.exports = {
       DB: 'booking',
       DB_USER: 'root',
       DB_PASS: '123123',
-      CLIENT_ID: 'cb92ed50-5d9b-11eb-8635-6163697fc1b6',
-      CLIENT_SECRET: '5af7929af1a77a5088d327a625a546028259c7f1',
+      CLIENT_ID: 'a39087b1-8c44-478d-81cd-cbaee04cf212',
+      CLIENT_SECRET: '565b5d1b4ed092b0951222447d69318c59e54f8f',
       SPECULA_APM_ENDPOINT: 'http://localhost:8082',
       DB_SERVERS: 'localhost:27017',
-      PORT: 3000
+      PORT: 4000
     }
   }, {
     name: 'booking-service',
@@ -42,13 +42,13 @@ module.exports = {
       DB: 'booking',
       DB_USER: 'root',
       DB_PASS: '123123',
-      CLIENT_ID: 'cb92ed50-5d9b-11eb-8635-6163697fc1b6',
-      CLIENT_SECRET: '5af7929af1a77a5088d327a625a546028259c7f1',
+      CLIENT_ID: 'a39087b1-8c44-478d-81cd-cbaee04cf212',
+      CLIENT_SECRET: '565b5d1b4ed092b0951222447d69318c59e54f8f',
       SPECULA_APM_ENDPOINT: 'http://localhost:8082',
       DB_SERVERS: '127.0.0.1:27017',
-      PORT: 3001,
-      PAYMENT_SERVICE_TARGET: 'http://127.0.0.1:3002',
-      NOTIFICATION_SERVICE_TARGET: 'http://127.0.0.1:3006'
+      PORT: 4001,
+      PAYMENT_SERVICE_TARGET: 'http://127.0.0.1:4002',
+      NOTIFICATION_SERVICE_TARGET: 'http://127.0.0.1:4006'
     }
   }, {
     name: 'cinema-catalog-service',
@@ -59,11 +59,11 @@ module.exports = {
       DB: 'cinemas',
       DB_USER: 'root',
       DB_PASS: '123123',
-      CLIENT_ID: 'cb92ed50-5d9b-11eb-8635-6163697fc1b6',
-      CLIENT_SECRET: '5af7929af1a77a5088d327a625a546028259c7f1',
+      CLIENT_ID: 'a39087b1-8c44-478d-81cd-cbaee04cf212',
+      CLIENT_SECRET: '565b5d1b4ed092b0951222447d69318c59e54f8f',
       SPECULA_APM_ENDPOINT: 'http://localhost:8082',
       DB_SERVERS: 'localhost:27017',
-      PORT: 3003
+      PORT: 4003
     }
   }, {
     name: 'notification-service',
@@ -75,9 +75,9 @@ module.exports = {
       DB_USER: 'root',
       DB_PASS: '123123',
       DB_SERVERS: 'localhost:27017',
-      PORT: 3006,
-      CLIENT_ID: 'cb92ed50-5d9b-11eb-8635-6163697fc1b6',
-      CLIENT_SECRET: '5af7929af1a77a5088d327a625a546028259c7f1',
+      PORT: 4006,
+      CLIENT_ID: 'a39087b1-8c44-478d-81cd-cbaee04cf212',
+      CLIENT_SECRET: '565b5d1b4ed092b0951222447d69318c59e54f8f',
       SPECULA_APM_ENDPOINT: 'http://localhost:8082',
       EMAIL: 'speculaiodev@gmail.com',
       EMAIL_PASS: 'fpu%S8WYHyMK'
@@ -91,11 +91,11 @@ module.exports = {
       DB: 'booking',
       DB_USER: 'root',
       DB_PASS: '123123',
-      CLIENT_ID: 'cb92ed50-5d9b-11eb-8635-6163697fc1b6',
-      CLIENT_SECRET: '5af7929af1a77a5088d327a625a546028259c7f1',
+      CLIENT_ID: 'a39087b1-8c44-478d-81cd-cbaee04cf212',
+      CLIENT_SECRET: '565b5d1b4ed092b0951222447d69318c59e54f8f',
       SPECULA_APM_ENDPOINT: 'http://localhost:8082',
       DB_SERVERS: 'localhost:27017',
-      PORT: 3002
+      PORT: 4002
     }
   }]
 };
