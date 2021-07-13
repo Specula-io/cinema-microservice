@@ -1,3 +1,6 @@
+const CLIENT_SECRET = '202963304781f829e04ac322a9c6cb9aa41ed7cd';
+const CLIENT_ID = '607d3e71-de6c-4659-972b-10a6e0ef80df';
+
 module.exports = {
   apps: [{
     name: 'api-gateway',
@@ -8,8 +11,8 @@ module.exports = {
       DB: 'booking',
       DB_USER: 'root',
       DB_PASS: '123123',
-      CLIENT_ID: 'a39087b1-8c44-478d-81cd-cbaee04cf212',
-      CLIENT_SECRET: '565b5d1b4ed092b0951222447d69318c59e54f8f',
+      CLIENT_ID: CLIENT_ID,
+      CLIENT_SECRET: CLIENT_SECRET,
       SPECULA_APM_ENDPOINT: 'http://localhost:8082',
       PORT: 8581,
       MOVIES_SERVICE_TARGET: 'http://127.0.0.1:4000',
@@ -27,8 +30,8 @@ module.exports = {
       DB: 'booking',
       DB_USER: 'root',
       DB_PASS: '123123',
-      CLIENT_ID: 'a39087b1-8c44-478d-81cd-cbaee04cf212',
-      CLIENT_SECRET: '565b5d1b4ed092b0951222447d69318c59e54f8f',
+      CLIENT_ID: CLIENT_ID,
+      CLIENT_SECRET: CLIENT_SECRET,
       SPECULA_APM_ENDPOINT: 'http://localhost:8082',
       DB_SERVERS: 'localhost:27017',
       PORT: 4000
@@ -42,8 +45,8 @@ module.exports = {
       DB: 'booking',
       DB_USER: 'root',
       DB_PASS: '123123',
-      CLIENT_ID: 'a39087b1-8c44-478d-81cd-cbaee04cf212',
-      CLIENT_SECRET: '565b5d1b4ed092b0951222447d69318c59e54f8f',
+      CLIENT_ID: CLIENT_ID,
+      CLIENT_SECRET: CLIENT_SECRET,
       SPECULA_APM_ENDPOINT: 'http://localhost:8082',
       DB_SERVERS: '127.0.0.1:27017',
       PORT: 4001,
@@ -59,8 +62,8 @@ module.exports = {
       DB: 'cinemas',
       DB_USER: 'root',
       DB_PASS: '123123',
-      CLIENT_ID: 'a39087b1-8c44-478d-81cd-cbaee04cf212',
-      CLIENT_SECRET: '565b5d1b4ed092b0951222447d69318c59e54f8f',
+      CLIENT_ID: CLIENT_ID,
+      CLIENT_SECRET: CLIENT_SECRET,
       SPECULA_APM_ENDPOINT: 'http://localhost:8082',
       DB_SERVERS: 'localhost:27017',
       PORT: 4003
@@ -76,8 +79,8 @@ module.exports = {
       DB_PASS: '123123',
       DB_SERVERS: 'localhost:27017',
       PORT: 4006,
-      CLIENT_ID: 'a39087b1-8c44-478d-81cd-cbaee04cf212',
-      CLIENT_SECRET: '565b5d1b4ed092b0951222447d69318c59e54f8f',
+      CLIENT_ID: CLIENT_ID,
+      CLIENT_SECRET: CLIENT_SECRET,
       SPECULA_APM_ENDPOINT: 'http://localhost:8082',
       EMAIL: 'speculaiodev@gmail.com',
       EMAIL_PASS: 'fpu%S8WYHyMK'
@@ -91,8 +94,8 @@ module.exports = {
       DB: 'booking',
       DB_USER: 'root',
       DB_PASS: '123123',
-      CLIENT_ID: 'a39087b1-8c44-478d-81cd-cbaee04cf212',
-      CLIENT_SECRET: '565b5d1b4ed092b0951222447d69318c59e54f8f',
+      CLIENT_ID: CLIENT_ID,
+      CLIENT_SECRET: CLIENT_SECRET,
       SPECULA_APM_ENDPOINT: 'http://localhost:8082',
       DB_SERVERS: 'localhost:27017',
       PORT: 4002
